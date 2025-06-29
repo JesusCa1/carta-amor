@@ -2,162 +2,241 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Para ti, mi amor Piama 💖</title>
-  <link rel="manifest" href="manifest.json">
+  <title>Para Piama 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ff4081">
+  <link rel="manifest" href="manifest.json">
   <link rel="icon" href="img/icono.png">
 
-  <!-- Fuente romántica -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js');
-      });
-    }
-  </script>
+  <!-- Fuentes románticas -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background: radial-gradient(#ffe6f0, #ccf2ff);
-      font-family: 'Poppins', sans-serif;
-      color: #444;
-      overflow: hidden;
+      box-sizing: border-box;
     }
 
-    .carta {
-      width: 90%;
-      max-width: 600px;
-      margin: 80px auto;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 25px;
-      box-shadow: 0 0 40px rgba(255, 105, 180, 0.2);
-      text-align: center;
+    body {
+      background: radial-gradient(#ffe0f0, #cceeff);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .contenido {
       position: relative;
-      z-index: 2;
-      animation: entrada 1.2s ease-in-out;
+      z-index: 1;
+      max-width: 800px;
+      margin: 100px auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 25px;
+      padding: 60px 30px;
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.2);
+      animation: entrada 2s ease;
     }
 
     @keyframes entrada {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
     h1 {
-      color: #ff4081;
       font-family: 'Great Vibes', cursive;
-      font-size: 40px;
-      margin-bottom: 10px;
+      font-size: 60px;
+      text-align: center;
+      color: #ff4081;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px #fff;
     }
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
+    .subtitulo {
+      text-align: center;
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .maquina {
+      font-size: 22px;
+      color: #d0005c;
+      border-right: 2px solid #d0005c;
+      white-space: nowrap;
+      overflow: hidden;
+      width: fit-content;
+      margin: auto;
+      padding-top: 20px;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: #d0005c; }
+      50% { border-color: transparent; }
     }
 
     button {
-      margin-top: 25px;
-      background: linear-gradient(to right, #ff69b4, #ff85a2);
-      color: white;
-      border: none;
       padding: 15px 40px;
-      border-radius: 50px;
+      border-radius: 40px;
+      background: linear-gradient(to right, #ff4081, #ff8ac7);
+      color: white;
       font-size: 20px;
-      font-weight: bold;
+      border: none;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
-      transition: transform 0.3s ease;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 25px;
     }
 
     button:hover {
       transform: scale(1.1);
+      background: linear-gradient(to right, #ff3e81, #ff69b4);
     }
 
-    #mensaje {
-      margin-top: 25px;
-      font-size: 20px;
-      color: #d0005c;
-      font-weight: bold;
+    #mensajeSecreto {
       display: none;
-      animation: fadein 1s ease-in;
+      font-weight: bold;
+      color: #d0005c;
+      margin-top: 15px;
+      text-align: center;
     }
 
-    @keyframes fadein {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    #contador {
+      font-weight: bold;
     }
 
     .corazon {
       position: fixed;
       color: #ff3366;
       animation: flotar 6s linear infinite;
-      font-size: 20px;
-      z-index: 0;
-      opacity: 0.8;
+      font-size: 24px;
+      z-index: 1;
+      opacity: 0.9;
     }
 
     @keyframes flotar {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) scale(1.5);
-        opacity: 0;
-      }
-    }
-
-    .brillos {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/stardust.png');
-      opacity: 0.15;
-      z-index: 0;
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
     }
   </style>
 </head>
 <body>
+<canvas id="stars"></canvas>
+<div class="contenido">
+  <h1>Para ti, Piama 💖</h1>
+  <div class="subtitulo">Esta no es una página cualquiera... Es mi corazón hecho código, para ti.</div>
 
-<div class="brillos"></div>
+  <div class="maquina" id="maquina"></div>
 
-<div class="carta">
-  <h1>Para ti, mi Piama 💞</h1>
-  <p>
-    Esta página es una pequeña muestra de todo el amor que siento por ti. <br>
-    Gracias por estar en mi vida, por tus palabras dulces, tus abrazos y tu risa que me enamora más cada día. <br>
-    ¡Eres mi razón de sonreír! 💘
-  </p>
+  <div style="margin-top: 30px; text-align:center">
+    <button onclick="mostrarMensajeSecreto()">💗 ¿Un secreto? 💗</button>
+    <p id="mensajeSecreto">El secreto es que… ¡ya no sé vivir sin ti! Eres mi casa, mi mundo y mi cielo. 🌌💖</p>
+  </div>
 
-  <button onclick="mostrarMensaje()">Presiona el ❤️</button>
-  <div id="mensaje">Piama, te amo con todo mi ser. Eres mi destino, mi paz y mi hogar 🌹✨</div>
+  <div style="margin-top: 40px; font-size: 18px; color:#555; text-align:center">
+    Llevamos <span id="contador"></span> días amándonos. 🗓️
+  </div>
+
+  <div style="margin-top: 20px; text-align:center">
+    <button onclick="toggleModo()">TE AMO</button>
+  </div>
 </div>
 
 <script>
-  function crearCorazon() {
-    const corazon = document.createElement('div');
-    corazon.classList.add('corazon');
-    corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.fontSize = (Math.random() * 20 + 10) + "px";
-    corazon.innerText = "❤️";
-    document.body.appendChild(corazon);
+  // Estrellas mágicas
+  const canvas = document.getElementById("stars");
+  const ctx = canvas.getContext("2d");
+  let w = canvas.width = window.innerWidth;
+  let h = canvas.height = window.innerHeight;
+  let stars = [];
+  for (let i = 0; i < 100; i++) {
+    stars.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.5, d: Math.random() + 0.2 });
+  }
+  function drawStars() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "#fff";
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = "#fff";
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, false);
+      ctx.fill();
+    }
+    updateStars();
+  }
+  function updateStars() {
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+      s.y -= s.d;
+      if (s.y < 0) {
+        s.y = h;
+        s.x = Math.random() * w;
+      }
+    }
+  }
+  function animateStars() {
+    drawStars();
+    requestAnimationFrame(animateStars);
+  }
+  animateStars();
+  window.onresize = () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  };
 
-    setTimeout(() => {
-      corazon.remove();
-    }, 6000);
+  // Máquina de escribir
+  const texto = "Te amo Piama, más de lo que cualquier palabra podría expresar. Esta carta no tiene final... como nuestro amor.";
+  let i = 0;
+  function escribirMaquina() {
+    if (i < texto.length) {
+      document.getElementById("maquina").innerHTML += texto.charAt(i);
+      i++;
+      setTimeout(escribirMaquina, 50);
+    }
+  }
+  escribirMaquina();
+
+  // Mensaje oculto
+  function mostrarMensajeSecreto() {
+    document.getElementById("mensajeSecreto").style.display = "block";
   }
 
-  setInterval(crearCorazon, 300);
+  // Contador de días
+  const fechaInicio = new Date("2023-08-15"); // CAMBIAR A FECHA REAL
+  const hoy = new Date();
+  const diferencia = Math.floor((hoy - fechaInicio) / (1000 * 60 * 60 * 24));
+  document.getElementById("contador").innerText = diferencia;
 
-  function mostrarMensaje() {
-    const mensaje = document.getElementById("mensaje");
-    mensaje.style.display = "block";
+  // Día/noche + corazones
+  let modoNoche = false;
+  function toggleModo() {
+    modoNoche = !modoNoche;
+    document.body.style.background = modoNoche ? "linear-gradient(to bottom, #1a1a40, #000)" : "radial-gradient(#ffe0f0, #cceeff)";
+    document.body.style.color = modoNoche ? "white" : "#444";
+    crearCorazones();
+  }
+  function crearCorazones() {
+    for (let j = 0; j < 20; j++) {
+      setTimeout(() => {
+        const corazon = document.createElement("div");
+        corazon.className = "corazon";
+        corazon.style.top = Math.random() * 100 + "vh";
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.fontSize = Math.random() * 20 + 20 + "px";
+        corazon.innerText = "💖";
+        document.body.appendChild(corazon);
+        setTimeout(() => corazon.remove(), 5000);
+      }, j * 100);
+    }
   }
 </script>
-
 </body>
 </html>
