@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff4081">
-<link rel="icon" href="img/e70fbcfc228d46184bb98f01ff3114a7-icono-de-corazon-de-amor-de-san-valentin.webp">
-
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js');
-    });
-  }
-</script>
-
   <meta charset="UTF-8">
-  <title>Para ti mi amor 💕</title>
+  <title>Para ti, mi amor Piama 💖</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff4081">
+  <link rel="icon" href="img/icono.png">
+
+  <!-- Fuente romántica -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #ffd3e0, #cceeff);
-      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(#ffe6f0, #ccf2ff);
+      font-family: 'Poppins', sans-serif;
       color: #444;
       overflow: hidden;
     }
@@ -30,48 +33,71 @@
       max-width: 600px;
       margin: 80px auto;
       padding: 30px;
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.2);
       text-align: center;
       position: relative;
       z-index: 2;
+      animation: entrada 1.2s ease-in-out;
+    }
+
+    @keyframes entrada {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     h1 {
       color: #ff4081;
+      font-family: 'Great Vibes', cursive;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
     }
 
     button {
-      margin-top: 20px;
-      background-color: #ff4081;
+      margin-top: 25px;
+      background: linear-gradient(to right, #ff69b4, #ff85a2);
       color: white;
       border: none;
-      padding: 15px 30px;
+      padding: 15px 40px;
       border-radius: 50px;
       font-size: 20px;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: background-color 0.3s;
+      box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+      transition: transform 0.3s ease;
     }
 
     button:hover {
-      background-color: #e73370;
+      transform: scale(1.1);
     }
 
     #mensaje {
-      margin-top: 20px;
-      font-size: 18px;
+      margin-top: 25px;
+      font-size: 20px;
       color: #d0005c;
+      font-weight: bold;
       display: none;
+      animation: fadein 1s ease-in;
+    }
+
+    @keyframes fadein {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     .corazon {
       position: fixed;
-      color: red;
+      color: #ff3366;
       animation: flotar 6s linear infinite;
       font-size: 20px;
       z-index: 0;
+      opacity: 0.8;
     }
 
     @keyframes flotar {
@@ -84,20 +110,31 @@
         opacity: 0;
       }
     }
+
+    .brillos {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.15;
+      z-index: 0;
+    }
   </style>
 </head>
 <body>
 
+<div class="brillos"></div>
+
 <div class="carta">
-  <h1>Hola mi amor ❤️</h1>
+  <h1>Para ti, mi Piama 💞</h1>
   <p>
-    Esta es una pequeña página hecha con mucho amor para ti.<br>
-    Gracias por hacerme sonreír, por tus abrazos, por tu ternura...<br>
-    ¡Te amo más de lo que las palabras pueden expresar! 💖
+    Esta página es una pequeña muestra de todo el amor que siento por ti. <br>
+    Gracias por estar en mi vida, por tus palabras dulces, tus abrazos y tu risa que me enamora más cada día. <br>
+    ¡Eres mi razón de sonreír! 💘
   </p>
 
   <button onclick="mostrarMensaje()">Presiona el ❤️</button>
-  <div id="mensaje">¡Eres lo mejor que me ha pasado! 🌹 Te amo infinito 💞</div>
+  <div id="mensaje">Piama, te amo con todo mi ser. Eres mi destino, mi paz y mi hogar 🌹✨</div>
 </div>
 
 <script>
