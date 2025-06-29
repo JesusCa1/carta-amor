@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff4081">
+<link rel="icon" href="img/e70fbcfc228d46184bb98f01ff3114a7-icono-de-corazon-de-amor-de-san-valentin.webp">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js');
+    });
+  }
+</script>
+
+  <meta charset="UTF-8">
+  <title>Para ti mi amor 💕</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffd3e0, #cceeff);
+      font-family: 'Segoe UI', sans-serif;
+      color: #444;
+      overflow: hidden;
+    }
+
+    .carta {
+      width: 90%;
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4081;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e73370;
+    }
+
+    #mensaje {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #d0005c;
+      display: none;
+    }
+
+    .corazon {
+      position: fixed;
+      color: red;
+      animation: flotar 6s linear infinite;
+      font-size: 20px;
+      z-index: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="carta">
+  <h1>Hola mi amor ❤️</h1>
+  <p>
+    Esta es una pequeña página hecha con mucho amor para ti.<br>
+    Gracias por hacerme sonreír, por tus abrazos, por tu ternura...<br>
+    ¡Te amo más de lo que las palabras pueden expresar! 💖
+  </p>
+
+  <button onclick="mostrarMensaje()">Presiona el ❤️</button>
+  <div id="mensaje">¡Eres lo mejor que me ha pasado! 🌹 Te amo infinito 💞</div>
+</div>
+
+<script>
+  function crearCorazon() {
+    const corazon = document.createElement('div');
+    corazon.classList.add('corazon');
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (Math.random() * 20 + 10) + "px";
+    corazon.innerText = "❤️";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+      corazon.remove();
+    }, 6000);
+  }
+
+  setInterval(crearCorazon, 300);
+
+  function mostrarMensaje() {
+    const mensaje = document.getElementById("mensaje");
+    mensaje.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
