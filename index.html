@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Para Piama 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ff4081">
+  <meta name="theme-color" content="#1a1a40">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="img/icono.png">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
@@ -16,8 +16,9 @@
     }
 
     body {
-      background: radial-gradient(#ffe0f0, #cceeff);
+      background: linear-gradient(to bottom, #1a1a40, #000000);
       font-family: 'Raleway', sans-serif;
+      color: #ffffff;
       overflow-x: hidden;
     }
 
@@ -33,10 +34,10 @@
       z-index: 1;
       max-width: 800px;
       margin: 100px auto;
-      background: rgba(255,255,255,0.85);
+      background: rgba(20, 20, 40, 0.85);
       border-radius: 25px;
       padding: 60px 30px;
-      box-shadow: 0 0 40px rgba(255, 105, 180, 0.2);
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.15);
       animation: entrada 2s ease;
     }
 
@@ -49,22 +50,22 @@
       font-family: 'Great Vibes', cursive;
       font-size: 60px;
       text-align: center;
-      color: #ff4081;
+      color: #ff69b4;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 5px #fff;
+      text-shadow: 2px 2px 5px #000;
     }
 
     .subtitulo {
       text-align: center;
       font-size: 20px;
-      color: #555;
+      color: #ccc;
       margin-bottom: 30px;
     }
 
     .maquina {
       font-size: 22px;
-      color: #d0005c;
-      border-right: 2px solid #d0005c;
+      color: #ff66cc;
+      border-right: 2px solid #ff66cc;
       white-space: nowrap;
       overflow: hidden;
       width: fit-content;
@@ -74,7 +75,7 @@
     }
 
     @keyframes blink {
-      0%, 100% { border-color: #d0005c; }
+      0%, 100% { border-color: #ff66cc; }
       50% { border-color: transparent; }
     }
 
@@ -100,13 +101,14 @@
     #mensajeSecreto {
       display: none;
       font-weight: bold;
-      color: #d0005c;
+      color: #ff8ac7;
       margin-top: 15px;
       text-align: center;
     }
 
     #contador {
       font-weight: bold;
+      color: #ffbbf0;
     }
 
     .corazon {
@@ -123,7 +125,7 @@
       100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
     }
 
-    /* ESTILOS RESPONSIVOS */
+    /* Estilos responsivos para celular */
     @media (max-width: 600px) {
       .contenido {
         margin: 60px 15px;
@@ -175,16 +177,13 @@
     <p id="mensajeSecreto">El secreto es que… Te amo más de lo que te imaginas 🌌💖</p>
   </div>
 
-  <div style="margin-top: 40px; font-size: 18px; color:#555; text-align:center">
+  <div style="margin-top: 40px; font-size: 18px; color:#ccc; text-align:center">
     Llevamos <span id="contador"></span> días amándonos. 🗓️
-  </div>
-
-  <div style="margin-top: 20px; text-align:center">
-    <button onclick="toggleModo()">TE AMO</button>
   </div>
 </div>
 
 <script>
+  // Estrellas
   const canvas = document.getElementById("stars");
   const ctx = canvas.getContext("2d");
   let w = canvas.width = window.innerWidth;
@@ -238,9 +237,10 @@
   }
   escribirMaquina();
 
-  // Mostrar secreto
+  // Secreto
   function mostrarMensajeSecreto() {
     document.getElementById("mensajeSecreto").style.display = "block";
+    crearCorazones();
   }
 
   // Contador de días
@@ -249,15 +249,7 @@
   const diferencia = Math.floor((hoy - fechaInicio) / (1000 * 60 * 60 * 24));
   document.getElementById("contador").innerText = diferencia;
 
-  // Modo noche y corazones
-  let modoNoche = false;
-  function toggleModo() {
-    modoNoche = !modoNoche;
-    document.body.style.background = modoNoche ? "linear-gradient(to bottom, #1a1a40, #000)" : "radial-gradient(#ffe0f0, #cceeff)";
-    document.body.style.color = modoNoche ? "white" : "#444";
-    crearCorazones();
-  }
-
+  // Corazones flotando
   function crearCorazones() {
     for (let j = 0; j < 20; j++) {
       setTimeout(() => {
